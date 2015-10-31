@@ -17,6 +17,15 @@ public class BeaconAttachment {
         return new String(EncodeUtils.base64Decode(this.data));
     }
 
+    public String getSanitizedAttachmentName(){
+        if(attachmentName.contains("/")){
+            String[] parts = attachmentName.split("/");
+            if(parts.length>2)
+            return parts[3];
+        }
+        return attachmentName;
+    }
+
     @Override
     public String toString() {
         return "BeaconAttachments{" +
