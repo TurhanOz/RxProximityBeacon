@@ -1,0 +1,20 @@
+{
+  "beacons": [
+    {
+      "status": "ACTIVE",
+      "description": "testing purpose",
+      "latLng": {
+        "latitude": 41.796785399999997,
+        "longitude": 0.4628780999999997
+      },
+      "advertisedId": {
+        "type": "EDDYSTONE",
+        "id": "CIeKc9OmJ7WwLgAAAAAAAQ=="
+      },
+      "beaconName": "beacons/3!08878a73d3a627b5b02e000000000001",
+      "expectedStability": "STABLE"
+    }
+  ],
+  "nextPageToken": "Civ55ev////+zN7Px8fIx57IzJvMnsnNyJ3Knc/Nms/Pz8/Pz8/Pz8/Pzv/+EAEh5L1umSgzmnQxWx9GSjT84rs5AQAAABQaAABQAFoLCfUaF4yt7rVaEAE",
+  "totalCount": "1"
+}
