@@ -21,4 +21,8 @@ public interface BeaconsDiagnosticsService {
                                      @Query("pageSize") int pageSize,
                                      @Query("pageToken") String pageToken,
                                      @Query("alertFilter") BeaconAlert alertFilter);
+
+    // TODO : fix path (see description)
+    @GET("beacons/{beaconName}/diagnostics")
+    Observable<ListDiagnostics> list(@Path("beaconName") String sanitizedBeaconName);
 }
