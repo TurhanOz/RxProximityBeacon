@@ -5,6 +5,12 @@ public class Observation {
     String telemetry;
     String timestampMs;
 
+    public Observation(AdvertisedId advertisedId, String telemetry, String timestampMs) {
+        this.advertisedId = advertisedId;
+        this.telemetry = telemetry;
+        this.timestampMs = timestampMs;
+    }
+
     @Override
     public String toString() {
         return "Observation{" +
