@@ -9,6 +9,6 @@ import retrofit.http.Query;
 import rx.Observable;
 
 public interface BeaconInfoService {
-    @POST("beaconinfo:getforobserved")
+    @POST("beaconinfo\\:getforobserved")
     Observable<ListBeaconsInfo> getForObserved(@Query("key") String key, @Body ListObservations listObservations);
 }
