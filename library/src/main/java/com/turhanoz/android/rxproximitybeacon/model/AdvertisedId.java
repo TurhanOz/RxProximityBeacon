@@ -1,8 +1,10 @@
 package com.turhanoz.android.rxproximitybeacon.model;
 
+import com.turhanoz.android.rxproximitybeacon.util.EncodeUtils;
+
 public class AdvertisedId {
     BeaconType type;
-    String id;
+    public String id; //base64 encoded
 
 
     public AdvertisedId(BeaconType type, String id) {
@@ -14,7 +16,8 @@ public class AdvertisedId {
     public String toString() {
         return "AdvertiseId{" +
                 "type='" + type + '\'' +
-                ", id='" + id + '\'' +
+                ", encoded id='" + id + '\'' +
+                ", decoded id='" + EncodeUtils.base64Decode(id).toString() + '\'' +
                 '}';
     }
 }

@@ -5,6 +5,7 @@ import com.turhanoz.android.rxproximitybeacon.model.ListBeacons;
 
 import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.Headers;
 import retrofit.http.POST;
 import retrofit.http.PUT;
 import retrofit.http.Path;
@@ -16,7 +17,6 @@ import rx.Observable;
 // by {beaconName} (which is stored in Beacon.beaconName
 // https://github.com/square/retrofit/issues/1168
 public interface BeaconsService {
-    static final String ENDPOINT = "https://proximitybeacon.googleapis.com/v1beta1/";
 
     // TODO : fix path (see description)
     @POST("beacons/{beaconName}:activate")
@@ -37,10 +37,10 @@ public interface BeaconsService {
     @GET("beacons")
     Observable<ListBeacons> list(@Query("q") String query);
 
-    @POST("beacons:register")
+    @POST("beacons\\:register")
     Observable<Beacon> register(@Body Beacon beacon);
 
     // TODO : fix path (see description)
     @PUT("beacons/{beaconName}")
-    Observable<Beacon> update(@Body Beacon beacon);
+    Observable<Beacon> update(@Path("beaconName") String sanitizedBeaconName, @Body Beacon beacon);
 }

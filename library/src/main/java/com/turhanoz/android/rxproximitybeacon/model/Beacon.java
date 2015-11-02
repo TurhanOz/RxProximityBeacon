@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class Beacon {
     public String beaconName;
-    AdvertisedId advertisedId;
+    public AdvertisedId advertisedId;
     BeaconStatus status;
     String placeId;
     LatLng latLng;
     IndoorLevel indoorLevel;
     BeaconStability expectedStability;
-    String description;
+    public String description;
     HashMap<String, String> properties;
 
 
