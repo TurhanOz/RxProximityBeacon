@@ -2,6 +2,8 @@ package com.turhanoz.android.rxproximitybeacon.util;
 
 import android.util.Base64;
 
+import java.util.Locale;
+
 public class EncodeUtils {
     private EncodeUtils() {}
 
@@ -22,6 +24,6 @@ public class EncodeUtils {
             chars[i * 2] = HEX[c >>> 4];
             chars[i * 2 + 1] = HEX[c & 0x0F];
         }
-        return new String(chars).toLowerCase();
+        return new String(chars).toLowerCase(Locale.US);
     }
 }
