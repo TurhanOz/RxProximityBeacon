@@ -1,11 +1,10 @@
 package com.turhanoz.android.rxproximitybeacon;
 
 import com.turhanoz.android.rxproximitybeacon.model.Beacon;
-import com.turhanoz.android.rxproximitybeacon.model.ListBeacons;
+import com.turhanoz.android.rxproximitybeacon.model.BeaconList;
 
 import retrofit.http.Body;
 import retrofit.http.GET;
-import retrofit.http.Headers;
 import retrofit.http.POST;
 import retrofit.http.PUT;
 import retrofit.http.Path;
@@ -35,7 +34,7 @@ public interface BeaconsService {
     Observable<Beacon> get(@Path("beaconName") String sanitizedBeaconName);
 
     @GET("beacons")
-    Observable<ListBeacons> list(@Query("q") String query);
+    Observable<BeaconList> list(@Query("q") String query);
 
     @POST("beacons\\:register")
     Observable<Beacon> register(@Body Beacon beacon);

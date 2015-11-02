@@ -2,7 +2,7 @@ package com.turhanoz.android.rxproximitybeacon.model;
 
 import java.util.ArrayList;
 
-public class ListAttachments {
+public class BeaconAttachmentList {
     ArrayList<BeaconAttachment> attachments;
 
     @Override

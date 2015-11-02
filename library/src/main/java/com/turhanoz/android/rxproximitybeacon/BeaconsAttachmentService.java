@@ -2,7 +2,7 @@ package com.turhanoz.android.rxproximitybeacon;
 
 import com.turhanoz.android.rxproximitybeacon.model.BeaconAttachment;
 import com.turhanoz.android.rxproximitybeacon.model.DeletedAttachmentsCount;
-import com.turhanoz.android.rxproximitybeacon.model.ListAttachments;
+import com.turhanoz.android.rxproximitybeacon.model.BeaconAttachmentList;
 
 import retrofit.http.Body;
 import retrofit.http.DELETE;
@@ -37,11 +37,11 @@ public interface BeaconsAttachmentService {
 
     // TODO : fix path (see description)
     @GET("beacons/{beaconName}/attachments?namespacedType=*/*")
-    Observable<ListAttachments> list(@Path("beaconName") String beaconName);
+    Observable<BeaconAttachmentList> list(@Path("beaconName") String beaconName);
 
     // TODO : fix path (see description)
     @GET("beacons/{beaconName}/attachments")
-    Observable<ListAttachments> list(@Path("beaconName") String beaconName, @Query("namespacedType") String nameSpacedType);
+    Observable<BeaconAttachmentList> list(@Path("beaconName") String beaconName, @Query("namespacedType") String nameSpacedType);
 
 
 }

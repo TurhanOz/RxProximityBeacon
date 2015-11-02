@@ -3,7 +3,7 @@ package com.turhanoz.android.rxproximitybeacon.mock;
 import com.google.gson.Gson;
 import com.turhanoz.android.rxproximitybeacon.BeaconsService;
 import com.turhanoz.android.rxproximitybeacon.model.Beacon;
-import com.turhanoz.android.rxproximitybeacon.model.ListBeacons;
+import com.turhanoz.android.rxproximitybeacon.model.BeaconList;
 
 import retrofit.http.Body;
 import retrofit.http.Path;
@@ -32,10 +32,10 @@ public class MockBeaconService extends MockService implements BeaconsService {
     }
 
     @Override
-    public Observable<ListBeacons> list(@Query("q") String query) {
+    public Observable<BeaconList> list(@Query("q") String query) {
         String beaconListAsString = getResponseAsString("beacons_list.json");
-        ListBeacons listBeacons = new Gson().fromJson(beaconListAsString, ListBeacons.class);
-        return Observable.just(listBeacons);
+        BeaconList beaconList = new Gson().fromJson(beaconListAsString, BeaconList.class);
+        return Observable.just(beaconList);
     }
 
     @Override
@@ -44,9 +44,7 @@ public class MockBeaconService extends MockService implements BeaconsService {
     }
 
     @Override
-    public Observable<Beacon> update(@Body Beacon beacon) {
+    public Observable<Beacon> update(@Path("beaconName") String sanitizedBeaconName, @Body Beacon beacon) {
         return null;
     }
-
-
 }

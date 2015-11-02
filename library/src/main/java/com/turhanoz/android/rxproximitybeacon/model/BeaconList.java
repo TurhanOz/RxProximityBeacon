@@ -2,7 +2,7 @@ package com.turhanoz.android.rxproximitybeacon.model;
 
 import java.util.ArrayList;
 
-public class ListBeacons {
+public class BeaconList {
     public ArrayList<Beacon> beacons;
     String nextPageToken;
     String totalCount;

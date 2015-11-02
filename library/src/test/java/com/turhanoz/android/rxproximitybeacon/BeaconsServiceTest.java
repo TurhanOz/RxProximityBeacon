@@ -1,7 +1,7 @@
 package com.turhanoz.android.rxproximitybeacon;
 
 import com.turhanoz.android.rxproximitybeacon.mock.MockBeaconService;
-import com.turhanoz.android.rxproximitybeacon.model.ListBeacons;
+import com.turhanoz.android.rxproximitybeacon.model.BeaconList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,14 +46,14 @@ public class BeaconsServiceTest {
 
     @Test
     public void shouldGet() throws Exception {
-        Observer<ListBeacons> mockObserver = mock(Observer.class);
+        Observer<BeaconList> mockObserver = mock(Observer.class);
 
         sut.list("status:active")
                 .subscribeOn(Schedulers.trampoline())
                 .observeOn(Schedulers.trampoline())
                 .subscribe(mockObserver);
 
-        verify(mockObserver).onNext(any(ListBeacons.class));
+        verify(mockObserver).onNext(any(BeaconList.class));
         verify(mockObserver).onCompleted();
     }
 }

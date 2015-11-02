@@ -2,13 +2,13 @@ package com.turhanoz.android.rxproximitybeacon.model;
 
 import java.util.ArrayList;
 
-public class ListBeaconsInfo {
-    ArrayList<BeaconInfo> beacons;
+public class NamespaceList {
+    public ArrayList<Namespace> namespaces;
 
     @Override
     public String toString() {
-        return "ListBeaconsInfo{" +
-                "beacons=" + beacons +
+        return "NamespaceList{" +
+                "namespaces=" + namespaces +
                 '}';
     }
 }

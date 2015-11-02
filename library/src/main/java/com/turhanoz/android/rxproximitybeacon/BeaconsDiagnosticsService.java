@@ -1,8 +1,7 @@
 package com.turhanoz.android.rxproximitybeacon;
 
-import com.turhanoz.android.rxproximitybeacon.model.Beacon;
 import com.turhanoz.android.rxproximitybeacon.model.BeaconAlert;
-import com.turhanoz.android.rxproximitybeacon.model.ListDiagnostics;
+import com.turhanoz.android.rxproximitybeacon.model.DiagnosticList;
 
 import retrofit.http.GET;
 import retrofit.http.Path;
@@ -17,12 +16,12 @@ public interface BeaconsDiagnosticsService {
 
     // TODO : fix path (see description)
     @GET("beacons/{beaconName}/diagnostics")
-    Observable<ListDiagnostics> list(@Path("beaconName") String sanitizedBeaconName,
+    Observable<DiagnosticList> list(@Path("beaconName") String sanitizedBeaconName,
                                      @Query("pageSize") int pageSize,
                                      @Query("pageToken") String pageToken,
                                      @Query("alertFilter") BeaconAlert alertFilter);
 
     // TODO : fix path (see description)
     @GET("beacons/{beaconName}/diagnostics")
-    Observable<ListDiagnostics> list(@Path("beaconName") String sanitizedBeaconName);
+    Observable<DiagnosticList> list(@Path("beaconName") String sanitizedBeaconName);
 }
