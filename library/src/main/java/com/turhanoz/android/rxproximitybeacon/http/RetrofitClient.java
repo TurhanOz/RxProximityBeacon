@@ -5,6 +5,7 @@ import com.turhanoz.android.rxproximitybeacon.BeaconInfoService;
 import com.turhanoz.android.rxproximitybeacon.BeaconsAttachmentService;
 import com.turhanoz.android.rxproximitybeacon.BeaconsDiagnosticsService;
 import com.turhanoz.android.rxproximitybeacon.BeaconsService;
+import com.turhanoz.android.rxproximitybeacon.BuildConfig;
 import com.turhanoz.android.rxproximitybeacon.NamespacesService;
 
 import retrofit.GsonConverterFactory;
@@ -37,12 +38,11 @@ public class RetrofitClient {
         client = new OkHttpClient();
         client.interceptors().add(new AuthorizationInterceptor(token));
         client.interceptors().add(new JsonContentTypeInterceptor());
-//        if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             client.interceptors().add(httpLoggingInterceptor);
-//        }
-
+        }
         //TODO : client.setAuthenticator(http://lgvalle.xyz/2015/07/27/okhttp-authentication/)
     }
 
@@ -52,12 +52,10 @@ public class RetrofitClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client)
-
                 .build();
     }
 
     private void initService() {
-
         infoService = retrofit.create(BeaconInfoService.class);
         attachmentService = retrofit.create(BeaconsAttachmentService.class);
         diagnosticsService = retrofit.create(BeaconsDiagnosticsService.class);
