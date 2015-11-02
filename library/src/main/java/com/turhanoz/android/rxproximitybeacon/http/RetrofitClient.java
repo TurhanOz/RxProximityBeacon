@@ -6,14 +6,15 @@ import com.turhanoz.android.rxproximitybeacon.BeaconsAttachmentService;
 import com.turhanoz.android.rxproximitybeacon.BeaconsDiagnosticsService;
 import com.turhanoz.android.rxproximitybeacon.BeaconsService;
 import com.turhanoz.android.rxproximitybeacon.NamespacesService;
-import com.turhanoz.android.rxproximitybeacon.ProximityBeaconService;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 
 public class RetrofitClient {
-    ProximityBeaconService service;
+    public static final String ENDPOINT = "https://proximitybeacon.googleapis.com/v1beta1/";
+    public static final String SCOPE = "oauth2:https://www.googleapis.com/auth/userlocation.beacon.registry";
+
     BeaconInfoService infoService;
     BeaconsAttachmentService attachmentService;
     BeaconsDiagnosticsService diagnosticsService;
@@ -35,31 +36,33 @@ public class RetrofitClient {
     private void initOkHttpClient(String token) {
         client = new OkHttpClient();
         client.interceptors().add(new AuthorizationInterceptor(token));
-        client.interceptors().add(new LoggingInterceptor());
+        client.interceptors().add(new JsonContentTypeInterceptor());
+//        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            client.interceptors().add(httpLoggingInterceptor);
+//        }
+
         //TODO : client.setAuthenticator(http://lgvalle.xyz/2015/07/27/okhttp-authentication/)
     }
 
     private void initRetrofit() {
         retrofit = new Retrofit.Builder()
-                .baseUrl(service.ENDPOINT)
+                .baseUrl(ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client)
+
                 .build();
     }
 
     private void initService() {
-        service = retrofit.create(ProximityBeaconService.class);
 
         infoService = retrofit.create(BeaconInfoService.class);
         attachmentService = retrofit.create(BeaconsAttachmentService.class);
         diagnosticsService = retrofit.create(BeaconsDiagnosticsService.class);
         beaconsService = retrofit.create(BeaconsService.class);
         namespacesService = retrofit.create(NamespacesService.class);
-    }
-
-    public ProximityBeaconService getService() {
-        return service;
     }
 
     public BeaconInfoService getInfoService() {

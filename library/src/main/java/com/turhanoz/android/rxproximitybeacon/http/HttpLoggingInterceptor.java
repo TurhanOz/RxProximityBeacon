@@ -1,5 +1,7 @@
 package com.turhanoz.android.rxproximitybeacon.http;
 
+import android.util.Log;
+
 import com.squareup.okhttp.Connection;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.HttpUrl;
@@ -89,6 +91,7 @@ public class HttpLoggingInterceptor implements Interceptor {
         Logger DEFAULT = new Logger() {
             @Override
             public void log(String message) {
+                Log.d("HTTP", message);
                 //Platform.get().log(message);
             }
         };
