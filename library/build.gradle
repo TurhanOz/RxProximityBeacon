@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'org.robolectric'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+group = "com.turhanoz.android"
+archivesBaseName = "rxproximitybeacon"
+version = "0.0.1"
 
 android {
     compileSdkVersion 23
@@ -59,6 +65,64 @@ task copyTestResources(type: Copy) {
 }
 
 assembleDebug.dependsOn(copyTestResources)
+
+configurations {
+    archives {
+        extendsFrom configurations.default
+    }
+}
+
+signing {
+    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+def ossrhUsername = hasProperty('ossrhUsername') ? ossrhUsername : System.getenv('ossrhUsername')
+def ossrhPassword = hasProperty('ossrhPassword') ? ossrhPassword : System.getenv('ossrhPassword')
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Android Rx Proximity Beacon'
+                packaging 'aar'
+                description 'A simple android library that lets you easily query against the Proximity Beacon REST Api in a Reactive manner.'
+                url 'https://github.com/TurhanOz/RxProximityBeacon'
+
+                scm {
+                    connection 'scm:git@github.com:TurhanOz/RxProximityBeacon.git'
+                    developerConnection 'scm:git@github.com:TurhanOz/RxProximityBeacon.git'
+                    url 'https://github.com/TurhanOz/RxProximityBeacon'
+                }
+
+                licenses {
+                    license {
+                        name 'Apache License, Version 2.0'
+                        url 'https://github.com/TurhanOz/RxProximityBeacon/blob/master/LICENSE'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'TurhanOz'
+                        name 'Turhan Oz'
+                        email '@turhanoz'
+                    }
+                }
+            }
+        }
+    }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
