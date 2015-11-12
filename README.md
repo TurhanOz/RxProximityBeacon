@@ -78,7 +78,7 @@ Indeed, oauth2Token and raw beacon configuration have been hard coded (so you ha
 
 ### TODO
 Anyone who would like to contribute is more than welcome :)
-- update sample to get rid of hardcoded stuff (like oauth2Token)
+- update sample to get rid of hardcoded stuff (like oauth2Token, using [RxGoogleAuthentication](https://github.com/TurhanOz/RxGoogleAuthentication) or [GoogleSignIn](https://developers.google.com/identity/sign-in/android/start) ?)
 - enhance UnitTest to validate integrity of pojo binding (while json serializing/deserializing)
 - add Service tests (Beacon, BeaconInfo, Attachment, Diagnostic, Namespace) based on what's already started.
 - use client.setAuthenticator() instead of AuthorizationInterceptor ?
