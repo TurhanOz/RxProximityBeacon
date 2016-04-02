@@ -3,6 +3,7 @@
 [![Maven Central](https://img.shields.io/badge/maven--central-0.0.1-blue.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22rxproximitybeacon%22)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxProximityBeacon-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2745)
 [![Stories in Ready](https://badge.waffle.io/TurhanOz/RxProximityBeacon.png?label=ready&title=Ready)](https://waffle.io/TurhanOz/RxProximityBeacon)
+[![Gitter](https://badges.gitter.im/TurhanOz/RxProximityBeacon.svg)](https://gitter.im/TurhanOz/RxProximityBeacon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A simple android library that lets you easily query against the [Proximity Beacon REST Api](https://developers.google.com/beacons/proximity/reference/rest/) in a Reactive manner.
 
