@@ -1,4 +1,6 @@
 # Android RxProximityBeacon
+
+[![Join the chat at https://gitter.im/TurhanOz/RxProximityBeacon](https://badges.gitter.im/TurhanOz/RxProximityBeacon.svg)](https://gitter.im/TurhanOz/RxProximityBeacon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/TurhanOz/RxProximityBeacon.svg?branch=master)](https://travis-ci.org/TurhanOz/RxProximityBeacon)
 [![Maven Central](https://img.shields.io/badge/maven--central-0.0.1-blue.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22rxproximitybeacon%22)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RxProximityBeacon-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2745)
